@@ -1,5 +1,5 @@
 {
-  "name": "html-to-jsx",
+	"name": "html-to-jsx",
 	"displayName": "html-to-jsx",
 	"description": "",
 	"version": "0.0.1",
@@ -10,14 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:html-to-jsx.helloWorld"
+		"onCommand:html-to-jsx.convertToJsx"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "html-to-jsx.helloWorld",
-				"title": "Hello World"
+				"command": "html-to-jsx.convertToJsx",
+				"title": "Convert Html to Jsx"
 			}
 		]
 	},
