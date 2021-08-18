@@ -4,6 +4,8 @@ All notable changes to the "html-to-jsx" extension will be documented in this fi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [0.0.1] - 2021-08-18
 
-- Initial release
+### Added
+
+-Added everything
