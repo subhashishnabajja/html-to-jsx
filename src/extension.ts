@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
-import handleConversion from "./lib/converToJsx";
+import handleConversion from "./lib/handleConversion";
+import handlePaste from "./lib/handlePaste";
 
 export function activate(context: vscode.ExtensionContext) {
   console.log("extension is now up and runing");
@@ -21,8 +22,15 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
   context.subscriptions.push(convertToHTML);
+
+  //Paste as per the extension of the file
+  let pasteAsJsx = vscode.commands.registerCommand(
+    "html-to-jsx.pasteAsJsx",
+    handlePaste
+  );
+  context.subscriptions.push(pasteAsJsx);
 }
 
 export function deactivate() {
-  vscode.window.showInformationMessage("Successfully disable");
+  vscode.window.showInformationMessage("Successfully disabled");
 }

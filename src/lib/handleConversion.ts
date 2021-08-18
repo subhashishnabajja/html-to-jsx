@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import matchAll = require("string.prototype.matchall");
 import attributes from "./dataset";
+import converter from "./converter";
 
 /**
  * Convert jsx to html and vice-versa
@@ -15,8 +16,7 @@ const handleConversion = (to: "HTML" | "JSX") => {
   //The selection
   const selection = vscode.window.activeTextEditor
     ?.selection as vscode.Selection;
-  //The edited block
-  const newBlock: string[] = [];
+
   //Loop through multiple selections
 
   const start = selection.start; //start of the selection
@@ -34,37 +34,9 @@ const handleConversion = (to: "HTML" | "JSX") => {
     .split("\n") as string[];
   console.log("start of the text");
 
-  //Loop through each line of the selection
-  for (const line of textBlock) {
-    const regex =
-      /([^\r\n\t\f\v= '"]+)(?:=(["'])?((?:.(?!\2?\s+(?:\S+)=|\2))+.)\2?)?/g;
-    const matches = [...matchAll(line, regex)];
-    let newLine: string = "";
+  //The edited block
+  const newBlock = converter(textBlock, to);
 
-    for (const match of matches) {
-      console.log(match);
-
-      const attribute = attributes.find(({ plain, jsx }) => {
-        if (to === "JSX") {
-          return plain === match[1];
-        } else {
-          return jsx === match[1];
-        }
-      });
-      if (attribute) {
-        console.log(attribute);
-
-        if (to === "JSX") {
-          newLine = line.replace(attribute?.plain, attribute?.jsx);
-        } else {
-          newLine = line.replace(attribute?.jsx, attribute?.plain);
-        }
-        console.log(newLine);
-      }
-    }
-    //Checks if the new line is empty, if empty then pushes the original line
-    newBlock.push(newLine !== "" ? newLine : line);
-  }
   //Edit the block in the editor
   editor?.edit((editorBuilder: vscode.TextEditorEdit) => {
     console.log(newBlock);
