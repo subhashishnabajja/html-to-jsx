@@ -18,8 +18,21 @@
 			{
 				"command": "html-to-jsx.convertToJsx",
 				"title": "Convert Html to Jsx"
+			},
+			{
+				"command": "html-to-jsx.helloWorld",
+				"title": "Hello world"
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorHasSelection",
+					"command": "html-to-jsx.convertToJsx",
+					"group": "modification"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

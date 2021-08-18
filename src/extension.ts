@@ -52,9 +52,16 @@ const handleConversion = () => {
 };
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand(
+  let convert = vscode.commands.registerCommand(
     "html-to-jsx.convertToJsx",
     handleConversion
+  );
+  context.subscriptions.push(convert);
+  let disposable = vscode.commands.registerCommand(
+    "html-to-jsx.helloWorld",
+    () => {
+      vscode.window.showInformationMessage("Hello world");
+    }
   );
 
   context.subscriptions.push(disposable);
