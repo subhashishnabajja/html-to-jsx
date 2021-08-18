@@ -42,6 +42,8 @@ const handleConversion = (to: "HTML" | "JSX") => {
     let newLine: string = "";
 
     for (const match of matches) {
+      console.log(match);
+
       const attribute = attributes.find(({ plain, jsx }) => {
         if (to === "JSX") {
           return plain === match[1];
@@ -57,12 +59,16 @@ const handleConversion = (to: "HTML" | "JSX") => {
         } else {
           newLine = line.replace(attribute?.jsx, attribute?.plain);
         }
+        console.log(newLine);
       }
     }
-    newBlock.push(newLine);
+    //Checks if the new line is empty, if empty then pushes the original line
+    newBlock.push(newLine !== "" ? newLine : line);
   }
   //Edit the block in the editor
   editor?.edit((editorBuilder: vscode.TextEditorEdit) => {
+    console.log(newBlock);
+
     editorBuilder.replace(selection, newBlock.join("\n"));
   });
 };

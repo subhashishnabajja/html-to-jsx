@@ -10,8 +10,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:html-to-jsx.convertToJsx",
-		"onCommand:html-to-jsx.convertToHtml"
+		"onLanguage:javascriptreact",
+		"onLanguage:typescriptreact",
+		"onLanguage:javascript",
+		"onLanguage:html"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -32,8 +34,13 @@
 		"menus": {
 			"editor/context": [
 				{
-					"when": "editorHasSelection",
+					"when": "editorHasSelection && resourceLangId === javascript",
 					"command": "html-to-jsx.convertToJsx",
+					"group": "modification"
+				},
+				{
+					"when": "editorHasSelection",
+					"command": "html-to-jsx.convertToHtml",
 					"group": "modification"
 				}
 			]

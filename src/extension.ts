@@ -2,6 +2,8 @@ import * as vscode from "vscode";
 import handleConversion from "./lib/converToJsx";
 
 export function activate(context: vscode.ExtensionContext) {
+  console.log("extension is now up and runing");
+
   //Convert HTML to JSx
   let convertToJsx = vscode.commands.registerCommand(
     "html-to-jsx.convertToJsx",
