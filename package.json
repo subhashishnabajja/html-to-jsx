@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:html-to-jsx.convertToJsx"
+		"onCommand:html-to-jsx.convertToJsx",
+		"onCommand:html-to-jsx.convertToHtml"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -20,8 +21,12 @@
 				"title": "Convert Html to Jsx"
 			},
 			{
-				"command": "html-to-jsx.helloWorld",
-				"title": "Hello world"
+				"command": "html-to-jsx.convertToHtml",
+				"title": "Convert Jsx to Html"
+			},
+			{
+				"command": "html-to-jsx.pasteAsJsx",
+				"title": "Paste as Jsx"
 			}
 		],
 		"menus": {
