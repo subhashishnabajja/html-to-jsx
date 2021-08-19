@@ -3,6 +3,11 @@
 	"displayName": "html-to-jsx",
 	"description": "",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/subhashishnabajja/html-to-jsx"
+	},
+	"icon": "icon/logo.png",
 	"engines": {
 		"vscode": "^1.59.0"
 	},
@@ -10,14 +15,49 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:html-to-jsx.convertToJsx"
+		"onCommand:html-to-jsx.convertToJsx",
+		"onCommand:html-to-jsx.convertToHtml",
+		"onCommand:html-to-jsx.pasteAsJsx"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "html-to-jsx.convertToJsx",
-				"title": "Convert Html to Jsx"
+				"title": "Convert HTML to JSX"
+			},
+			{
+				"command": "html-to-jsx.convertToHtml",
+				"title": "Convert JSX to HTML"
+			},
+			{
+				"command": "html-to-jsx.pasteAsJsx",
+				"title": "Paste as JSX"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorHasSelection",
+					"command": "html-to-jsx.convertToJsx",
+					"group": "modification"
+				},
+				{
+					"when": "editorHasSelection",
+					"command": "html-to-jsx.convertToHtml",
+					"group": "modification"
+				},
+				{
+					"when": "editorIsOpen",
+					"command": "html-to-jsx.pasteAsJsx",
+					"group": "modification"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "html-to-jsx.pasteAsJsx",
+				"key": "ctrl+alt+v"
 			}
 		]
 	},
