@@ -3,6 +3,11 @@
 	"displayName": "html-to-jsx",
 	"description": "",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/subhashishnabajja/html-to-jsx"
+	},
+	"icon": "icon/logo.png",
 	"engines": {
 		"vscode": "^1.59.0"
 	},
@@ -10,25 +15,24 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage:javascriptreact",
-		"onLanguage:typescriptreact",
-		"onLanguage:javascript",
-		"onLanguage:html"
+		"onCommand:html-to-jsx.convertToJsx",
+		"onCommand:html-to-jsx.convertToHtml",
+		"onCommand:html-to-jsx.pasteAsJsx"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "html-to-jsx.convertToJsx",
-				"title": "Convert Html to Jsx"
+				"title": "Convert HTML to JSX"
 			},
 			{
 				"command": "html-to-jsx.convertToHtml",
-				"title": "Convert Jsx to Html"
+				"title": "Convert JSX to HTML"
 			},
 			{
 				"command": "html-to-jsx.pasteAsJsx",
-				"title": "Paste as jsx"
+				"title": "Paste as JSX"
 			}
 		],
 		"menus": {
