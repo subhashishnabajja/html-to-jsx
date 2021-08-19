@@ -1,5 +1,12 @@
 import matchAll = require("string.prototype.matchall");
 import attributes from "./dataset";
+
+/**
+ * Converts html string to jsx string
+ * @param {string[]} block
+ * @param {"HTML"|"JSX"} to
+ * @returns {string[]} newBlock
+ */
 const converter = (block: string[], to: "HTML" | "JSX") => {
   const newBlock: string[] = [];
   for (const line of block) {
