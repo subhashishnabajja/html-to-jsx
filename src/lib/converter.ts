@@ -16,8 +16,6 @@ const converter = (block: string[], to: "HTML" | "JSX") => {
     let newLine: string = "";
 
     for (const match of matches) {
-      console.log(match);
-
       const attribute = attributes.find(({ plain, jsx }) => {
         if (to === "JSX") {
           return plain === match[1];
@@ -26,14 +24,11 @@ const converter = (block: string[], to: "HTML" | "JSX") => {
         }
       });
       if (attribute) {
-        console.log(attribute);
-
         if (to === "JSX") {
           newLine = line.replace(attribute?.plain, attribute?.jsx);
         } else {
           newLine = line.replace(attribute?.jsx, attribute?.plain);
         }
-        console.log(newLine);
       }
     }
     //Checks if the new line is empty, if empty then pushes the original line

@@ -11,7 +11,6 @@ const handleConversion = (to: "HTML" | "JSX") => {
   //The active text editor
   const editor = vscode.window.activeTextEditor;
   //TODO:Remove this log
-  console.log(to);
 
   //The selection
   const selection = vscode.window.activeTextEditor
@@ -32,15 +31,12 @@ const handleConversion = (to: "HTML" | "JSX") => {
   const textBlock = vscode.window.activeTextEditor?.document
     .getText(selectionRange)
     .split("\n") as string[];
-  console.log("start of the text");
 
   //The edited block
   const newBlock = converter(textBlock, to);
 
   //Edit the block in the editor
   editor?.edit((editorBuilder: vscode.TextEditorEdit) => {
-    console.log(newBlock);
-
     editorBuilder.replace(selection, newBlock.join("\n"));
   });
 };
